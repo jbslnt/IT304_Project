@@ -39,12 +39,12 @@ In your Python script, add the connection configuration:
 import pyodbc
 
 def get_connection():
-return pyodbc.connect(
- 'DRIVER={ODBC Driver 17 for SQL Server};'
- 'SERVER=YOUR_SERVER_NAME;'  # Replace with actual server name
- 'DATABASE=YOUR_DATABASE_NAME;'  # Replace with actual database name
- 'Trusted_Connection=yes;'  # For Windows authentication
-  )
+    return pyodbc.connect(
+     'DRIVER={ODBC Driver 17 for SQL Server};'
+     'SERVER=YOUR_SERVER_NAME;'  # Replace with actual server name
+     'DATABASE=YOUR_DATABASE_NAME;'  # Replace with actual database name
+     'Trusted_Connection=yes;'  # For Windows authentication
+)
       
 6. Run Your Python Script
   - Run the Python script in the terminal:
