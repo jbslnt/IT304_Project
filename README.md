@@ -31,6 +31,7 @@ Here are the direct steps to set up and run your pyodbc project in Visual Studio
 
 4. Install ODBC Driver
   Install ODBC Driver 17 for SQL Server.
+ (Link: https://learn.microsoft.com/en-us/sql/connect/odbc/download-odbc-driver-for-sql-server?view=sql-server-ver16)
 
 5. Setup SQL Server Connection
 In your Python script, add the connection configuration:
