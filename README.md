@@ -36,15 +36,15 @@ Here are the direct steps to set up and run your pyodbc project in Visual Studio
 5. Setup SQL Server Connection
 In your Python script, add the connection configuration:
 
-  import pyodbc
-  
-  def get_connection():
-      return pyodbc.connect(
-          'DRIVER={ODBC Driver 17 for SQL Server};'
-          'SERVER=YOUR_SERVER_NAME;'  # Replace with actual server name
-          'DATABASE=YOUR_DATABASE_NAME;'  # Replace with actual database name
-          'Trusted_Connection=yes;'  # For Windows authentication
-      )
+import pyodbc
+
+def get_connection():
+return pyodbc.connect(
+ 'DRIVER={ODBC Driver 17 for SQL Server};'
+ 'SERVER=YOUR_SERVER_NAME;'  # Replace with actual server name
+ 'DATABASE=YOUR_DATABASE_NAME;'  # Replace with actual database name
+ 'Trusted_Connection=yes;'  # For Windows authentication
+  )
       
 6. Run Your Python Script
   - Run the Python script in the terminal:
