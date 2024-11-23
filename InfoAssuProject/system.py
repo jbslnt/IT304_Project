@@ -4,14 +4,14 @@ from Crypto.Util.Padding import pad, unpad
 import base64
 import os
 
-# AES Configuration
-key = b'SecureKey1234567'  # 16 bytes key (ensure secure key management in production)
 
-# Generate a random 16-byte IV
+key = b'SecureKey1234567'  
+
+
 def generate_iv():
     return os.urandom(16)
 
-# Functions for Encryption and Decryption
+
 def encrypt_data(data):
     iv = generate_iv()
     cipher = AES.new(key, AES.MODE_CBC, iv)
@@ -26,16 +26,15 @@ def decrypt_data(encrypted_data):
     decrypted = unpad(cipher.decrypt(encrypted_message), AES.block_size)
     return decrypted.decode('utf-8')
 
-# SQL Server Connection
+
 def get_connection():
     return pyodbc.connect(
         'DRIVER={ODBC Driver 17 for SQL Server};'
-        'SERVER=DESKTOP-L26QNKV;'  # Change this to your server name
+        'SERVER=DESKTOP-L26QNKV;'
         'DATABASE=CapitalGuardDB;'
-        'Trusted_Connection=yes;'  # Windows Authentication
+        'Trusted_Connection=yes;'  
     )
 
-# Collect and Store Client and Banking Data
 def collect_and_store_client_data():
     print("Enter Client and Banking Details:")
     first_name = input("First Name: ")
@@ -53,7 +52,6 @@ def collect_and_store_client_data():
     account_balance = input("Account Balance: ")
     banking_pin = input("Banking PIN: ")
 
-    # Encrypt sensitive data
     encrypted_data = {
         'first_name': encrypt_data(first_name),
         'last_name': encrypt_data(last_name),
@@ -71,7 +69,6 @@ def collect_and_store_client_data():
         'banking_pin': encrypt_data(banking_pin),
     }
 
-    # Store encrypted data in the database
     connection = get_connection()
     cursor = connection.cursor()
 
@@ -88,7 +85,6 @@ def collect_and_store_client_data():
     cursor.close()
     connection.close()
 
-# Retrieve and Decrypt Client and Banking Data
 def view_client_data():
     connection = get_connection()
     cursor = connection.cursor()
@@ -119,7 +115,6 @@ def view_client_data():
             'Banking PIN': decrypt_data(row[13]),
         }
 
-        # Print decrypted data
         for key, value in decrypted_data.items():
             print(f"{key}: {value}")
         print("-" * 50)
@@ -127,7 +122,6 @@ def view_client_data():
     cursor.close()
     connection.close()
 
-# Main Menu
 def main():
     while True:
         print("\n--- Client Management System ---")
